@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+
+.wrapper{
+    background-image: url(gradient-bg.jpg);
+    max-width: 100vw;
+    min-height: 100vh;
+    background-size: cover;
+    place-items: center;
+    background-position: center;
+}
+
+.player-info{
+    position: absolute;
+    top: 3rem;
+    word-spacing: 2px;
+    font-size: xx-large;
+    color: #ffffff;
+    transform: translate(-50%);
+    left: 50%;
+    min-width: 200px;
+    min-height: 40px;
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    padding: 0.3rem 3rem;    
+}
+
+
+.main-box{
+    color: #ffffff;
+    position: absolute;
+    padding: 2rem;
+    /* height: fit-content; */
+    width: 90%;
+    max-width: 20rem;
+    min-height: 320px;
+    border-radius: 1rem;
+    background-color: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    /* place-items: center; */
+}
+.box{
+    place-items: center;
+    width: 100%;
+    height: 100%;
+    font-size: xx-large;
+    cursor: pointer;
+    justify-content: center;
+}
+
+.box1,.box4,.box7{
+    border-right: 2px solid white;
+}
+.box1,.box2,.box3{
+    border-bottom: 2px solid white;
+}
+
+.box4,.box5,.box6{
+    border-bottom: 2px solid white;
+}
+.box3,.box6,.box9{
+    border-left: 2px solid white;
+}
+
+.reset{
+    bottom: 10%;
+    top: 80%;
+}
+
+.display-class{
+    display: none;
+}
+
+.green-background{
+    background-color: green;    
+}
