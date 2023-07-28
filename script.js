@@ -2,19 +2,19 @@ let arr = [-1,-1,-1,-1,-1,-1,-1,-1,-1];
 let winner = 0;
 let allbox = document.getElementsByClassName('box');
 
+let winner_combinations = [
+    [0,1,2],
+    [3,4,5],
+    [6,7,8],
+    [0,3,6],
+    [1,4,7],
+    [2,5,8],
+    [0,4,8],
+    [2,4,6]
+];
+
 let checkWinners =function () {
     
-    let winner_combinations = [
-        [0,1,2],
-        [3,4,5],
-        [6,7,8],
-        [0,3,6],
-        [1,4,7],
-        [2,5,8],
-        [0,4,8],
-        [2,4,6]
-    ];
-
     for(let i = 0; i < winner_combinations.length; i++){
         if(arr[winner_combinations[i][0]] == arr[winner_combinations[i][1]] && arr[winner_combinations[i][1]] == arr[winner_combinations[i][2]] && arr[winner_combinations[i][0]]!= -1){
             
@@ -24,9 +24,13 @@ let checkWinners =function () {
             }
             player.innerHTML = 'Winner Player :'+ arr[winner_combinations[i][0]];
             document.querySelector('.reset').classList.remove('display-class');
-            
             return true; 
         } 
+    }
+    if(turn == 9){
+        player.innerHTML = 'Game Draw!'
+        document.querySelector('.reset').classList.remove('display-class');
+        return 0;
     }
     return 0;
 }
@@ -38,18 +42,21 @@ if(turn == 0){
 }
 function whenclick(event){
     if(winner)return ;
-if(turn % 2 != 0){
-    player.innerHTML = 'Current Player: O';
-}else{
-    player.innerHTML = 'Current Player: X';
-}
     let all_class = event.target.className.split(' ');
     let to_click = all_class[2][3]-1;
     let clicked_class = all_class[2];
     console.log(clicked_class);
+    console.log(to_click);
     if(arr[to_click] != -1){
         return;
     }
+
+    if(turn % 2 != 0){
+        player.innerHTML = 'Current Player: O';
+    }else{
+        player.innerHTML = 'Current Player: X';
+    }
+
     if(turn % 2 == 0){
         arr[to_click] = 'O';
         turn++;
@@ -68,6 +75,8 @@ if(turn % 2 != 0){
             console.log('winner');
         }
     }
+    console.log(arr);
+
 }
 
 document.querySelector('.submit').addEventListener('click', function(){
@@ -76,11 +85,11 @@ document.querySelector('.submit').addEventListener('click', function(){
 
 
 for(let key of allbox){
-    if(winner){
-        for(let i = 0;i < 9;i++){
-            arr[i] = -1;
-        }
-        break;
-    }
+    // if(winner){
+    //     for(let i = 0;i < 9;i++){
+    //         arr[i] = -1;
+    //     }
+    //     break;
+    // }
     key.addEventListener('click',whenclick)
 }
